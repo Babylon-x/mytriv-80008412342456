@@ -6,7 +6,7 @@
         <title>Trivia!</title>
         <script>
             // TODO: Add code to check answers to questions
-        function questions(correct, element) {
+          function answer(correct, element) {
             if (correct) {
                 document.getElementById(element).innerHTML = "Correct!"
             }
@@ -24,15 +24,15 @@
             })
         }
 
-        function button() {
+        function getButton() {
             reset()
             if (event.target.id == "correct") {
                 event.target.classList.add('correct');
-                questions(true, "return_part_1");
+                answer(true, "return_part_1");
             }
             else {
                 event.target.classList.add('incorrect');
-                questions(false, "return_part_1");
+                answer(false, "return_part_1");
             }
 
         }
@@ -40,17 +40,17 @@
         document.addEventListener("DOMContentLoaded", function (event) {
             var buttons = document.querySelectorAll(".button");
             buttons.forEach(function (button) {
-                button.addEventListener("click", button);
+                button.addEventListener("click", getButton);
             })
 
             inputField = document.querySelector('input')
-            button = document.querySelector("#check");
-            button.addEventListener('click', function (evt) {
+            checkButton = document.querySelector("#check");
+            checkButton.addEventListener('click', function (evt) {
                 if (inputField.value.toLowerCase() == "switzerland") {
-                    questions(true, "return_part_2");
+                    answer(true, "return_part_2");
                 }
                 else {
-                    questions(false, "return_part_2");
+                    answer(false, "return_part_2");
                 }
             });
         });
